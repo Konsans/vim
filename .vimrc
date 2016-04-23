@@ -3,6 +3,29 @@
 
 set helplang=cn
 set encoding=utf-8
+"set fenc=utf-8 
+"set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
+
+"set nocompatible
+"set history=100
+"set confirm
+"set clipboard+=unnamed 
+"filetype on
+"filetype plugin on
+"filetype indent on
+"set viminfo+=!
+"set iskeyword+=_,$,@,%,#,-
+"highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white 
+"match OverLength '\%101v.*'
+"highlight StatusLine guifg=SlateBlue guibg=Yellow 
+"highlight StatusLineNC guifg=Gray guibg=White 
+
+set backspace=2
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+set expandtab
+"set noexpandtab
 
 " normal
 " :help usr_29
@@ -13,6 +36,10 @@ set encoding=utf-8
 syntax enable
 syntax on
 colorscheme desert
+
+set cursorline
+hi CursorLine  cterm=NONE   ctermbg=darkred ctermfg=white
+hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white
 
 " ctags
 " :set tags=/home/wooin/vim71/tags
