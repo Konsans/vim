@@ -1,10 +1,14 @@
 " :help keycodes
 " <C-T>, <C-S-A>
 
+set nu
 set helplang=cn
 set encoding=utf-8
 "set fenc=utf-8 
 "set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
+
+"set default foldmethod
+"set foldmethod=indent
 
 "set nocompatible
 "set history=100
@@ -20,11 +24,13 @@ set encoding=utf-8
 "highlight StatusLine guifg=SlateBlue guibg=Yellow 
 "highlight StatusLineNC guifg=Gray guibg=White 
 
+set hlsearch
 set backspace=2
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
 set expandtab
+set fdm=syntax
 "set noexpandtab
 
 " normal
@@ -41,6 +47,9 @@ set cursorline
 hi CursorLine  cterm=NONE   ctermbg=darkred ctermfg=white
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white
 
+highlight G1 ctermbg=blue guibg=blue
+highlight G2 ctermbg=red guibg=red
+
 " ctags
 " :set tags=/home/wooin/vim71/tags
 " <C-]> <C-T>
@@ -54,6 +63,7 @@ let Tlist_Exit_OnlyWindow=1
 " :help winmanager
 " <F1> <cr> - c d D i R s x
 let g:winManagerWindowLayout='FileExplorer|TagList'
+let g:AutoOpenWinManager=0
 nmap wm :WMToggle<cr>
 
 " :help if_cscop.txt
@@ -61,7 +71,7 @@ nmap wm :WMToggle<cr>
 " :cs add ~/vim71/cscope.out ~/vim71
 " :cs find c|d|e|f|g|i|s|t <string>
 " :cw
-set cscopequickfix=s-,c-,d-,i-,t-,e-
+" set cscopequickfix=s-,c-,d-,i-,t-,e-
 nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
@@ -70,13 +80,18 @@ nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-_>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-n> :cnext<CR>
+nmap <C-p> :cprev<CR>
 " :cs reset
 
 " :help quickfix
 " :cn   next
 " :cp   prev
-nmap <F6> :cn<cr>
-nmap <F7> :cp<cr>
+"nmap <F6> :cn<cr>
+"nmap <F7> :cp<cr>
+nmap <F5> :call clearmatches()<cr>
+nmap <F6> :let <C-R>=join(['a','a'], expand("<cword>"))<CR>=matchadd("G1", expand("<cword>"))<CR><cr>
+nmap <F7> :call matchdelete(<C-R>=join(['a','a'], expand("<cword>"))<CR>)<cr>
 
 " :help buffer
 " <Tab> <S-Tab> <Enter> d
@@ -102,7 +117,7 @@ nnoremap <silent> <F12> :A<CR>
 " :GrepBuffer [<grep_options>] [<search_pattern>]
 " :Bgrep [<grep_options>] [<search_pattern>]
 " :GrepArgs [<grep_options>] [<search_pattern>]
-nnoremap <silent> <F3> :Grep<CR>
+nnoremap <silent> <F3> :Rgrep<CR>
 
 " :help Mark
 " <Ctrl-F2> <F2> <Shift-F2>
