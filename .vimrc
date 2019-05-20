@@ -135,3 +135,12 @@ let g:SuperTabRetainCompletionType=2
 let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 " :help ins-completion
 " :help compl-omni
+
+map <S-F> :call FormatCode()<CR>
+func! FormatCode()
+    if &filetype == 'c' || &filetype == 'h'
+       exec "%! astyle -pH -A8"
+       exec "w"
+    return
+    endif
+endfunc
