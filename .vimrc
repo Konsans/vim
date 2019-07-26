@@ -51,7 +51,7 @@ highlight G1 ctermbg=blue guibg=blue
 highlight G2 ctermbg=red guibg=red
 
 " ctags
-" :set tags=/home/wooin/vim71/tags
+set tags=./tags;,tags
 " <C-]> <C-T>
 " ctags -R
 
